@@ -3,25 +3,37 @@ package main;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 
 public class SlidingPuzzle {
-	private static final Random RANDOM = new Random();
 	private static List<Integer> movements;
+	private static List<Integer> initalMovements;
 	private static int board[][] = new int[4][4];
+	private static int initialBoard[][];
 
 	// This method shuffles the tiles on the game board.
 	private static void shuffle() {
 		int n = 1000;
 		int randomNumber = (int) (Math.random() * 15);
 		while (n > 0) {
-			if (move(randomNumber))
+			if (move(randomNumber)) {
 				movements.add(randomNumber);
+				initalMovements.add(randomNumber);
+			}
 			randomNumber = (int) (Math.random() * 15);
 			n--;
+		}
+		saveInitialBoard();
+	}
+
+	private static void saveInitialBoard() {
+		initialBoard = new int[4][4];
+		for (int i = 0; i < board.length; i++) {
+			for (int j = 0; j < board.length; j++) {
+				initialBoard[i][j] = board[i][j];
+			}
 		}
 	}
 
@@ -117,7 +129,16 @@ public class SlidingPuzzle {
 
 	// Resets the game
 	private void reset() {
-		SlidingPuzzle p = new SlidingPuzzle();
+		System.out
+				.println("--------------------------------------------------");
+		System.out.println("Board reset");
+		for (int i = 0; i < board.length; i++) {
+			for (int j = 0; j < board.length; j++) {
+				board[i][j] = initialBoard[i][j];
+			}
+		}
+		movements.clear();
+		movements.addAll(initalMovements);
 	}
 
 	// Starts the game
@@ -139,17 +160,19 @@ public class SlidingPuzzle {
 			System.out.print("\n");
 			if (n == 17) {
 				reset();
-			}
-			if (n == 18) {
+				display();
+			} else if (n == 18) {
 				solve();
 				display();
 				break;
+			} else {
+				move(n);
+				display();
+				movements.add(m, n);
+				m++;
 			}
-			move(n);
-			display();
-			movements.add(m, n);
-			m++;
 		} while (win() != true);
+		sc.close();
 		if (win() == true)
 			System.out.println("CONGRATULATIONS YOU WIN!");
 	}
@@ -158,6 +181,7 @@ public class SlidingPuzzle {
 	private static void solve() {
 		System.out
 				.println("--------------------------------------------------");
+		System.out.println("SOLUTION");
 		Collections.reverse(movements);
 		for (int i = 0; i < movements.size(); i++) {
 			move(movements.get(i));
@@ -176,6 +200,7 @@ public class SlidingPuzzle {
 			}
 		}
 		movements = new ArrayList<Integer>();
+		initalMovements = new ArrayList<Integer>();
 	}
 
 	SlidingPuzzle() {
