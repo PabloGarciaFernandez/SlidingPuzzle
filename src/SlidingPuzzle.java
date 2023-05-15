@@ -47,89 +47,43 @@ public class SlidingPuzzle {
 
 	}
 
-	// This method moves the blank tile to the number specified.
+	// This method moves the blank tile to the specified location.
 	public static int[][] move(int[][] tiles, int n) {
 
-		int i1 = posI(tiles, 0);
-		int j1 = posJ(tiles, 0);
-		int i2 = posI(tiles, n);
-		int j2 = posJ(tiles, n);
-		int aux = 0;
-		if (tiles[1][0] == 0 || tiles[2][0] == 0) {
-			if (tiles[i1 + 1][j1] == tiles[i2][j2]
-					|| tiles[i1 - 1][j1] == tiles[i2][j2]
-					|| tiles[i1][j1 + 1] == tiles[i2][j2]) {
-				aux = tiles[i2][j2];
-				tiles[i2][j2] = tiles[i1][j1];
-				tiles[i1][j1] = aux;
-			}
-		} else if (tiles[3][0] == 0) {
-			if (tiles[i1 - 1][j1] == tiles[i2][j2]
-					|| tiles[i1][j1 + 1] == tiles[i2][j2]) {
-				aux = tiles[i2][j2];
-				tiles[i2][j2] = tiles[i1][j1];
-				tiles[i1][j1] = aux;
-			}
-		} else if (tiles[1][3] == 0 || tiles[2][3] == 0) {
-			if (tiles[i1 + 1][j1] == tiles[i2][j2]
-					|| tiles[i1 - 1][j1] == tiles[i2][j2]
-					|| tiles[i1][j1 - 1] == tiles[i2][j2]) {
-				aux = tiles[i2][j2];
-				tiles[i2][j2] = tiles[i1][j1];
-				tiles[i1][j1] = aux;
-			}
-		} else if (tiles[0][3] == 0) {
-			if (tiles[i1 + 1][j1] == tiles[i2][j2]
-					|| tiles[i1][j1 - 1] == tiles[i2][j2]) {
-				aux = tiles[i2][j2];
-				tiles[i2][j2] = tiles[i1][j1];
-				tiles[i1][j1] = aux;
-			}
-		} else if (tiles[3][3] == 0) {
-			if (tiles[i1][j1 - 1] == tiles[i2][j2]
-					|| tiles[i1 - 1][j1] == tiles[i2][j2]) {
-				aux = tiles[i2][j2];
-				tiles[i2][j2] = tiles[i1][j1];
-				tiles[i1][j1] = aux;
-			}
-		} else if (tiles[0][0] == 0) {
-			if (tiles[i1 + 1][j1] == tiles[i2][j2]
-					|| tiles[i1][j1 + 1] == tiles[i2][j2]) {
-				aux = tiles[i2][j2];
-				tiles[i2][j2] = tiles[i1][j1];
-				tiles[i1][j1] = aux;
-			}
+		// Get the positions(row and column) of the tiles
+		int blankTileRow = posI(tiles, 0);
+		int blankTileColumn = posJ(tiles, 0);
+		int targetTileRow = posI(tiles, n);
+		int targetTileColumn = posJ(tiles, n);
 
-		} else if (tiles[1][1] == 0 || tiles[1][2] == 0 || tiles[2][1] == 0
-				|| tiles[2][2] == 0) {
-			if (tiles[i1 + 1][j1] == tiles[i2][j2]
-					|| tiles[i1 - 1][j1] == tiles[i2][j2]
-					|| tiles[i1][j1 - 1] == tiles[i2][j2]
-					|| tiles[i1][j1 + 1] == tiles[i2][j2]) {
-				aux = tiles[i2][j2];
-				tiles[i2][j2] = tiles[i1][j1];
-				tiles[i1][j1] = aux;
-			}
-		} else if (tiles[0][1] == 0 || tiles[0][2] == 0) {
-			if (tiles[i1 + 1][j1] == tiles[i2][j2]
-					|| tiles[i1][j1 + 1] == tiles[i2][j2]
-					|| tiles[i1][j1 - 1] == tiles[i2][j2]) {
-				aux = tiles[i2][j2];
-				tiles[i2][j2] = tiles[i1][j1];
-				tiles[i1][j1] = aux;
-			}
-		}
+		// Checks if it is possible to move the tile
+		boolean isMovePossible = canMove(tiles, blankTileRow, blankTileColumn,
+				targetTileRow, targetTileColumn);
 
-		else // if(tiles[13]==0||tiles[14]==0)
-		if (tiles[i1][j1 + 1] == tiles[i2][j2]
-				|| tiles[i1][j1 - 1] == tiles[i2][j2]
-				|| tiles[i1 - 1][j1] == tiles[i2][j2]) {
-			aux = tiles[i2][j2];
-			tiles[i2][j2] = tiles[i1][j1];
-			tiles[i1][j1] = aux;
+		if (isMovePossible) {
+			int temp = tiles[targetTileRow][targetTileColumn];
+			tiles[targetTileRow][targetTileColumn] = tiles[blankTileRow][blankTileColumn];
+			tiles[blankTileRow][blankTileColumn] = temp;
 		}
 
 		return tiles;
+
+	}
+
+	// This method returns if the movement proposed is possible
+	private static boolean canMove(int[][] tiles, int blankTileRow,
+			int blankTileColumn, int targetTileRow, int targetTileColumn) {
+
+		if (tiles[targetTileRow][targetTileColumn] == 0) {
+			return false;
+		}
+
+		// The blank tile can only move horizontally or vertically.
+		int deltaRow = targetTileRow - blankTileRow;
+		int deltaColumn = targetTileColumn - blankTileColumn;
+
+		return ((Math.abs(deltaRow) <= 1 && Math.abs(deltaColumn) <= 0)
+				|| (Math.abs(deltaRow) <= 0 && Math.abs(deltaColumn) <= 1));
 
 	}
 
