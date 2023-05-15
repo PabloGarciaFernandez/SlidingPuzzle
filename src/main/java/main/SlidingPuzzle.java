@@ -7,8 +7,8 @@ import javax.swing.JOptionPane;
 
 public class SlidingPuzzle {
 	private static final Random RANDOM = new Random();
-	private int tiles[];
 
+	// This method shuffles the tiles on the game board.
 	private static int[][] shuffle(int[][] tiles) {
 		int n = 4, m = 4;
 		while (n > 1) {
@@ -21,6 +21,7 @@ public class SlidingPuzzle {
 		return tiles;
 	}
 
+	// Return the row position of number
 	public static int posI(int[][] tiles, int n) {
 		for (int i = 0; i < tiles.length; i++) {
 			for (int j = 0; j < tiles.length; j++) {
@@ -34,6 +35,7 @@ public class SlidingPuzzle {
 
 	}
 
+	// Return the row position of number
 	public static int posJ(int[][] tiles, int n) {
 		for (int i = 0; i < tiles.length; i++) {
 			for (int j = 0; j < tiles.length; j++) {
@@ -47,6 +49,7 @@ public class SlidingPuzzle {
 
 	}
 
+	// This method moves the blank tile to the number specified.
 	public static int[][] move(int[][] tiles, int n) {
 
 		int i1 = posI(tiles, 0);
@@ -54,8 +57,6 @@ public class SlidingPuzzle {
 		int i2 = posI(tiles, n);
 		int j2 = posJ(tiles, n);
 		int aux = 0;
-		// for(int i=0;i<tiles.length;i++){
-		// for(int j=0;j<tiles.length;j++) {
 		if (tiles[1][0] == 0 || tiles[2][0] == 0) {
 			if (tiles[i1 + 1][j1] == tiles[i2][j2]
 					|| tiles[i1 - 1][j1] == tiles[i2][j2]
@@ -130,20 +131,11 @@ public class SlidingPuzzle {
 			tiles[i1][j1] = aux;
 		}
 
-		/*
-		 * if (tiles[i][j]==n) { aux=tiles[i][j]; tiles[i][j]=tiles[i1][j1];
-		 * tiles[i1][j1]=aux;
-		 * 
-		 * }
-		 */
-
-		// }
-		// }
-
 		return tiles;
 
 	}
 
+	// This method displays the game
 	public static int[][] display(int[][] tiles) {
 		for (int i = 0; i < tiles.length; i++) {
 			for (int j = 0; j < tiles.length; j++) {
@@ -156,6 +148,8 @@ public class SlidingPuzzle {
 
 	}
 
+	// This method compares the actual board with the wining board in order to
+	// know if the player have won
 	public static boolean win(int[][] tiles) {
 		if (tiles[0][0] == 1 && tiles[0][1] == 2 && tiles[0][2] == 3
 				&& tiles[0][3] == 4 && tiles[1][0] == 5 && tiles[1][1] == 6
@@ -168,10 +162,12 @@ public class SlidingPuzzle {
 		return false;
 	}
 
+	// Resets the game
 	private void reset() {
 		SlidingPuzzle p = new SlidingPuzzle();
 	}
 
+	// Starts the game
 	private void start(int[][] tiles, int movements[]) {
 		display(tiles);
 		int m = 0;
@@ -203,6 +199,7 @@ public class SlidingPuzzle {
 			System.out.println("CONGRATULATIONS YOU WIN!");
 	}
 
+	// This method reverses the order of an array.
 	private static int[] inverseArray(int movements[]) {
 		int aux = 0;
 		for (int i = 0; i < movements.length / 2; i++) {
@@ -213,6 +210,7 @@ public class SlidingPuzzle {
 		return movements;
 	}
 
+	// This method solves the sliding puzzle.
 	private static int[][] solve(int tiles[][], int movements[]) {
 		int[] inv = inverseArray(movements);
 		for (int i = 0; i < inv.length; i++) {
@@ -254,6 +252,8 @@ public class SlidingPuzzle {
 			movements[m] = n;
 			m++;
 		} while (n != 16);
+
+		sc.close();
 
 	}
 
