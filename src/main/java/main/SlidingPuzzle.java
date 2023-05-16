@@ -8,10 +8,14 @@ import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 public class SlidingPuzzle {
-	private static List<Integer> movements;
-	private static List<Integer> initalMovements;
-	private static int board[][] = new int[4][4];
-	private static int initialBoard[][];
+	private List<Integer> movements;
+	private List<Integer> initalMovements;
+	private int board[][] = new int[4][4];
+	private int initialBoard[][];
+
+	public SlidingPuzzle() {
+		createBoard();
+	}
 
 	// This method shuffles the tiles on the game board.
 	public void shuffle() {
@@ -138,7 +142,6 @@ public class SlidingPuzzle {
 
 	// Starts the game
 	public void start() {
-		createBoard();
 		shuffle();
 		display();
 		int m = 0;
@@ -191,11 +194,20 @@ public class SlidingPuzzle {
 			for (int j = 0; j < board.length; j++) {
 				board[i][j] += e;
 				if (i == 3 && j == 3)
-					board[i][j] = board[i][j] * 0;
+					board[i][j] = 0;
 				e++;
 			}
 		}
 		movements = new ArrayList<Integer>();
 		initalMovements = new ArrayList<Integer>();
 	}
+
+	public int[][] getBoard() {
+		return board;
+	}
+
+	public int[][] getInitialBoard() {
+		return initialBoard;
+	}
+
 }
