@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
  * This class represents a sliding puzzle game.
  *
  * @author Pedro Zahonero Mangas
- * @author Pablo García fernández
+ * @author Pablo Garcï¿½a fernï¿½ndez
  * @version 1.0
  * @since 2023-05-15
  */
