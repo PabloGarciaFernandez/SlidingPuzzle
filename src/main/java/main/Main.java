@@ -6,7 +6,6 @@ public class Main {
 		System.out.println("We start the game. GOOD LUCK!");
 		SlidingPuzzle p = new SlidingPuzzle();
 		p.start();
-
 	}
 
 }
