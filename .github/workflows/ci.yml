@@ -30,9 +30,9 @@ jobs:
       - name: Test with Maven
         run: mvn test -Djacoco.enable=true
       - name: Upload coverage to Codecov
-      	uses: actions/checkout@master
         uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           fail_ci_if_error: true
+          files: /SlidingPuzzle/target/site/jacoco/jacoco.xml
           verbose: true
