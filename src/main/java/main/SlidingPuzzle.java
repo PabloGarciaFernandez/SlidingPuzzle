@@ -51,7 +51,7 @@ public class SlidingPuzzle {
 		int randomNumber = (int) (Math.random() * 15);
 		while (n > 0) {
 			if (move(randomNumber)) {
-				movements.add(randomNumber);
+				// movements.add(randomNumber);
 				initalMovements.add(randomNumber);
 			}
 			randomNumber = (int) (Math.random() * 15);
@@ -128,6 +128,7 @@ public class SlidingPuzzle {
 			int temp = board[targetTileRow][targetTileColumn];
 			board[targetTileRow][targetTileColumn] = board[blankTileRow][blankTileColumn];
 			board[blankTileRow][blankTileColumn] = temp;
+			movements.add(n);
 		}
 
 		return isMovePossible;
@@ -208,13 +209,6 @@ public class SlidingPuzzle {
 	public void start() {
 		shuffle();
 		display();
-		int m = 0;
-		for (int i = 0; i < movements.size(); i++) {
-			if (movements.get(i) == 0) {
-				m = i + 1;
-				break;
-			}
-		}
 		Scanner sc = new Scanner(System.in);
 		do {
 			String num_string = JOptionPane
@@ -231,8 +225,6 @@ public class SlidingPuzzle {
 			} else {
 				move(n);
 				display();
-				movements.add(m, n);
-				m++;
 			}
 		} while (win() != true);
 		sc.close();
@@ -247,9 +239,11 @@ public class SlidingPuzzle {
 		System.out
 				.println("--------------------------------------------------");
 		System.out.println("SOLUTION");
-		Collections.reverse(movements);
-		for (int i = 0; i < movements.size(); i++) {
-			move(movements.get(i));
+		List<Integer> rev = new ArrayList<Integer>();
+		rev.addAll(movements);
+		Collections.reverse(rev);
+		for (int i = 0; i < rev.size(); i++) {
+			move(rev.get(i));
 		}
 
 	}
