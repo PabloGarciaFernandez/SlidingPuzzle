@@ -1,4 +1,4 @@
-name: Workflow for RT-ATE
+name: Workflow for SPME-SlidingPuzzle
 
 on: 
   push:
