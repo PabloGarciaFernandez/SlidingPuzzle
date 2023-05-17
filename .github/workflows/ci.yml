@@ -34,5 +34,5 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           fail_ci_if_error: true
-          files: /SlidingPuzzle/target/site/jacoco/jacoco.xml
+          files: /home/runner/work/SlidingPuzzle/SlidingPuzzle/target/site/jacoco/jacoco.xml
           verbose: true
