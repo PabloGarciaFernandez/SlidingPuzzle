@@ -7,17 +7,45 @@ import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 
+/**
+ * This class represents a sliding puzzle game.
+ *
+ * @author Pedro Zahonero Mangas
+ * @author Pablo García fernández
+ * @version 1.0
+ * @since 2023-05-15
+ */
 public class SlidingPuzzle {
+
+	/**
+	 * The list of movements that have been made.
+	 */
 	private List<Integer> movements;
+	/**
+	 * The list of movements that have made when shuffle the board.
+	 */
+
 	private List<Integer> initalMovements;
+	/**
+	 * The current state of the board.
+	 */
 	private int board[][] = new int[4][4];
+
+	/**
+	 * The initial state of the board.
+	 */
 	private int initialBoard[][];
 
+	/**
+	 * Constructs a new sliding puzzle game with the default initial state.
+	 */
 	public SlidingPuzzle() {
 		createBoard();
 	}
 
-	// This method shuffles the tiles on the game board.
+	/**
+	 * Shuffles the tiles on the game board.
+	 */
 	public void shuffle() {
 		int n = 1000;
 		int randomNumber = (int) (Math.random() * 15);
@@ -32,6 +60,9 @@ public class SlidingPuzzle {
 		saveInitialBoard();
 	}
 
+	/**
+	 * Saves the initial state of the board.
+	 */
 	private void saveInitialBoard() {
 		initialBoard = new int[4][4];
 		for (int i = 0; i < board.length; i++) {
@@ -41,8 +72,13 @@ public class SlidingPuzzle {
 		}
 	}
 
-	// Return the row position of number
-	public int posI(int n) {
+	/**
+	 * Gets the row position of the given number.
+	 *
+	 * @param n the number
+	 * @return the row position of the number
+	 */
+	public int rowPosition(int n) {
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board.length; j++) {
 				if (board[i][j] == n) {
@@ -53,8 +89,13 @@ public class SlidingPuzzle {
 		return n;
 	}
 
-	// Return the row position of number
-	public int posJ(int n) {
+	/**
+	 * Gets the column position of the given number.
+	 *
+	 * @param n the number
+	 * @return the column position of the number
+	 */
+	public int columnPosition(int n) {
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board.length; j++) {
 				if (board[i][j] == n) {
@@ -65,14 +106,19 @@ public class SlidingPuzzle {
 		return n;
 	}
 
-	// This method moves the blank tile to the specified location.
+	/**
+	 * Moves the n tile to the blank location if possible.
+	 *
+	 * @param n the number we want to move
+	 * @return true if the move was successful, false otherwise
+	 */
 	public boolean move(int n) {
 
 		// Get the positions(row and column) of the tiles
-		int blankTileRow = posI(0);
-		int blankTileColumn = posJ(0);
-		int targetTileRow = posI(n);
-		int targetTileColumn = posJ(n);
+		int blankTileRow = rowPosition(0);
+		int blankTileColumn = columnPosition(0);
+		int targetTileRow = rowPosition(n);
+		int targetTileColumn = columnPosition(n);
 
 		// Checks if it is possible to move the tile
 		boolean isMovePossible = canMove(blankTileRow, blankTileColumn,
@@ -88,7 +134,16 @@ public class SlidingPuzzle {
 
 	}
 
-	// This method returns if the movement proposed is possible
+	/**
+	 * Checks if the movement proposed is possible.
+	 *
+	 * @param blankTileRow     The row of the blank tile.
+	 * @param blankTileColumn  The column of the blank tile.
+	 * @param targetTileRow    The row of the target tile.
+	 * @param targetTileColumn The column of the target tile.
+	 * @return {@code true} if the movement is possible, {@code false}
+	 *         otherwise.
+	 */
 	private boolean canMove(int blankTileRow, int blankTileColumn,
 			int targetTileRow, int targetTileColumn) {
 
@@ -105,7 +160,9 @@ public class SlidingPuzzle {
 
 	}
 
-	// This method displays the game
+	/**
+	 * Displays the game.
+	 */
 	public void display() {
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board.length; j++) {
@@ -115,8 +172,11 @@ public class SlidingPuzzle {
 		}
 	}
 
-	// This method compares the actual board with the wining board in order to
-	// know if the player have won
+	/**
+	 * Checks if the player has won.
+	 *
+	 * @return {@code true} if the player has won, {@code false} otherwise.
+	 */
 	public boolean win() {
 		return (board[0][0] == 1 && board[0][1] == 2 && board[0][2] == 3
 				&& board[0][3] == 4 && board[1][0] == 5 && board[1][1] == 6
@@ -126,7 +186,9 @@ public class SlidingPuzzle {
 				&& board[3][3] == 0);
 	}
 
-	// Resets the game
+	/**
+	 * Resets the game.
+	 */
 	public void reset() {
 		System.out
 				.println("--------------------------------------------------");
@@ -140,7 +202,9 @@ public class SlidingPuzzle {
 		movements.addAll(initalMovements);
 	}
 
-	// Starts the game
+	/**
+	 * Starts the game.
+	 */
 	public void start() {
 		shuffle();
 		display();
@@ -176,7 +240,9 @@ public class SlidingPuzzle {
 			System.out.println("CONGRATULATIONS YOU WIN!");
 	}
 
-	// This method solves the sliding puzzle.
+	/**
+	 * Solves the game.
+	 */
 	public void solve() {
 		System.out
 				.println("--------------------------------------------------");
@@ -188,6 +254,9 @@ public class SlidingPuzzle {
 
 	}
 
+	/**
+	 * Creates the sorted board.
+	 */
 	private void createBoard() {
 		int e = 1;
 		for (int i = 0; i < board.length; i++) {
@@ -202,10 +271,20 @@ public class SlidingPuzzle {
 		initalMovements = new ArrayList<Integer>();
 	}
 
+	/**
+	 * Returns the board of the puzzle.
+	 *
+	 * @return The board of the puzzle.
+	 */
 	public int[][] getBoard() {
 		return board;
 	}
 
+	/**
+	 * Returns the initial state of the board.
+	 *
+	 * @return The initial state of the board.
+	 */
 	public int[][] getInitialBoard() {
 		return initialBoard;
 	}
