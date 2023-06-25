@@ -1,5 +1,6 @@
 package logic;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -45,13 +46,14 @@ public class SlidingPuzzle {
 	 */
 	public void shuffle() {
 		int n = 1000;
-		int randomNumber = (int) (Math.random() * 15);
+		SecureRandom random = new SecureRandom();
+		int randomNumber = random.nextInt(15);
 		while (n > 0) {
 			if (move(randomNumber)) {
 				// movements.add(randomNumber);
 				initalMovements.add(randomNumber);
 			}
-			randomNumber = (int) (Math.random() * 15);
+			randomNumber = random.nextInt(15);
 			n--;
 		}
 		saveInitialBoard();

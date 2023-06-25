@@ -19,7 +19,7 @@ public class Main {
 					PrincipalWindow frame = new PrincipalWindow(puzzle);
 					frame.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
+
 				}
 			}
 		});
