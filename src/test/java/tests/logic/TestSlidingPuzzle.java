@@ -1,19 +1,25 @@
-package tests;
+package tests.logic;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import main.SlidingPuzzle;
+import logic.SlidingPuzzle;
 
 public class TestSlidingPuzzle {
+	private SlidingPuzzle puzzle;
+
+	@BeforeEach
+	void init() {
+		puzzle = new SlidingPuzzle();
+	}
 
 	@Test
 	void testShuffle() {
-		SlidingPuzzle puzzle = new SlidingPuzzle();
 		int board[][] = puzzle.getBoard();
 		puzzle.shuffle();
 
@@ -23,7 +29,7 @@ public class TestSlidingPuzzle {
 
 	@Test
 	void testMove() {
-		SlidingPuzzle puzzle = new SlidingPuzzle();
+		;
 		puzzle.move(15);
 
 		// Check that the blank tile has moved to the left.
@@ -33,7 +39,6 @@ public class TestSlidingPuzzle {
 
 	@Test
 	void testWin() {
-		SlidingPuzzle puzzle = new SlidingPuzzle();
 		puzzle.shuffle();
 		puzzle.solve();
 		assertTrue(puzzle.win());
@@ -41,7 +46,6 @@ public class TestSlidingPuzzle {
 
 	@Test
 	void testReset() {
-		SlidingPuzzle puzzle = new SlidingPuzzle();
 		puzzle.shuffle();
 		for (int i = 1; i <= 15; i++) {
 			puzzle.move(i);
@@ -54,12 +58,21 @@ public class TestSlidingPuzzle {
 
 	@Test
 	void testSolve() {
-		SlidingPuzzle puzzle = new SlidingPuzzle();
 		puzzle.shuffle();
 		puzzle.solve();
 
 		// Check that the game has been solved.
 		assertTrue(puzzle.win());
+	}
+
+	@Test
+	void testRowPositionNotFind() {
+		assertEquals(-1, puzzle.rowPosition(100));
+	}
+
+	@Test
+	void testColumnPositionNotFind() {
+		assertEquals(-1, puzzle.columnPosition(100));
 	}
 
 }

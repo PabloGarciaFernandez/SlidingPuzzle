@@ -19,7 +19,7 @@
 				<version>3.0.0-M7</version>
 				<configuration>
 					<includes>
-						<include>TestSlidingPuzzle.java</include>
+						<include>TestSuite.java</include>
 					</includes>
 				</configuration>
 			</plugin>
@@ -53,6 +53,13 @@
 			<version>5.9.2</version>
 			<scope>test</scope>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.junit.platform/junit-platform-suite -->
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-suite</artifactId>
+            <version>1.9.3</version>
+            <scope>test</scope>
+        </dependency>
 	</dependencies>
 	<properties>
 		<sonar.organization>pablogarciafernandez</sonar.organization>

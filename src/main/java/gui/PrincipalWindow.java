@@ -18,7 +18,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
-import main.SlidingPuzzle;
+import logic.SlidingPuzzle;
 
 public class PrincipalWindow extends JFrame {
 

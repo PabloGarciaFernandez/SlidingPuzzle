@@ -1,17 +1,14 @@
-package main;
+package logic;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Scanner;
-
-import javax.swing.JOptionPane;
 
 /**
  * This class represents a sliding puzzle game.
  *
  * @author Pedro Zahonero Mangas
- * @author Pablo Garc�a fern�ndez
+ * @author Pablo Garcia Fernandez
  * @version 1.0
  * @since 2023-05-15
  */
@@ -86,7 +83,7 @@ public class SlidingPuzzle {
 				}
 			}
 		}
-		return n;
+		return -1;
 	}
 
 	/**
@@ -103,7 +100,7 @@ public class SlidingPuzzle {
 				}
 			}
 		}
-		return n;
+		return -1;
 	}
 
 	/**
@@ -162,18 +159,6 @@ public class SlidingPuzzle {
 	}
 
 	/**
-	 * Displays the game.
-	 */
-	public void display() {
-		for (int i = 0; i < board.length; i++) {
-			for (int j = 0; j < board.length; j++) {
-				System.out.print(board[i][j] + " ");
-			}
-			System.out.println();
-		}
-	}
-
-	/**
 	 * Checks if the player has won.
 	 *
 	 * @return {@code true} if the player has won, {@code false} otherwise.
@@ -191,9 +176,6 @@ public class SlidingPuzzle {
 	 * Resets the game.
 	 */
 	public void reset() {
-		System.out
-				.println("--------------------------------------------------");
-		System.out.println("Board reset");
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board.length; j++) {
 				board[i][j] = initialBoard[i][j];
@@ -204,41 +186,9 @@ public class SlidingPuzzle {
 	}
 
 	/**
-	 * Starts the game.
-	 */
-	public void start() {
-		shuffle();
-		display();
-		Scanner sc = new Scanner(System.in);
-		do {
-			String num_string = JOptionPane
-					.showInputDialog("Give me an integer: ");
-			int n = Integer.parseInt(num_string);
-			System.out.print("\n");
-			if (n == 17) {
-				reset();
-				display();
-			} else if (n == 18) {
-				solve();
-				display();
-				break;
-			} else {
-				move(n);
-				display();
-			}
-		} while (win() != true);
-		sc.close();
-		if (win() == true)
-			System.out.println("CONGRATULATIONS YOU WIN!");
-	}
-
-	/**
 	 * Solves the game.
 	 */
 	public void solve() {
-		System.out
-				.println("--------------------------------------------------");
-		System.out.println("SOLUTION");
 		List<Integer> rev = new ArrayList<Integer>();
 		rev.addAll(movements);
 		Collections.reverse(rev);
