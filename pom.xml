@@ -19,7 +19,7 @@
 				<version>3.0.0-M7</version>
 				<configuration>
 					<includes>
-						<include>TestSuite.java</include>
+						<include>TestSlidingPuzzle.java</include>
 					</includes>
 				</configuration>
 			</plugin>
@@ -42,6 +42,11 @@
 						</goals>
 					</execution>
 				</executions>
+				<configuration>
+                    <excludes>
+                        <exclude>PrincipalWindow.java</exclude>
+                    </excludes>
+                </configuration>
 			</plugin>
 		</plugins>
 	</build>
