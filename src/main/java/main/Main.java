@@ -3,6 +3,7 @@ package main;
 import java.awt.EventQueue;
 
 import gui.PrincipalWindow;
+import logic.SlidingPuzzle;
 
 public class Main {
 
@@ -18,7 +19,7 @@ public class Main {
 					PrincipalWindow frame = new PrincipalWindow(puzzle);
 					frame.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
+
 				}
 			}
 		});
