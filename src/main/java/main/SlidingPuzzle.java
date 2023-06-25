@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
  * This class represents a sliding puzzle game.
  *
  * @author Pedro Zahonero Mangas
- * @author Pablo Garcï¿½a fernï¿½ndez
+ * @author Pablo García Fernández
  * @version 1.0
  * @since 2023-05-15
  */
@@ -47,15 +47,15 @@ public class SlidingPuzzle {
 	 * Shuffles the tiles on the game board.
 	 */
 	public void shuffle() {
-		int n = 1000;
+		int numberOfMovements = 1000;
 		int randomNumber = (int) (Math.random() * 15);
-		while (n > 0) {
+		while (numberOfMovements > 0) {
 			if (move(randomNumber)) {
 				// movements.add(randomNumber);
 				initalMovements.add(randomNumber);
 			}
 			randomNumber = (int) (Math.random() * 15);
-			n--;
+			numberOfMovements--;
 		}
 		saveInitialBoard();
 	}
@@ -239,11 +239,11 @@ public class SlidingPuzzle {
 		System.out
 				.println("--------------------------------------------------");
 		System.out.println("SOLUTION");
-		List<Integer> rev = new ArrayList<Integer>();
-		rev.addAll(movements);
-		Collections.reverse(rev);
-		for (int i = 0; i < rev.size(); i++) {
-			move(rev.get(i));
+		List<Integer> reverseArray = new ArrayList<Integer>();
+		reverseArray.addAll(movements);
+		Collections.reverse(reverseArray);
+		for (int i = 0; i < reverseArray.size(); i++) {
+			move(reverseArray.get(i));
 		}
 
 	}
