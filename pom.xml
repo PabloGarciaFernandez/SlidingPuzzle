@@ -19,7 +19,7 @@
 				<version>3.0.0-M7</version>
 				<configuration>
 					<includes>
-						<include>TestSuite.java</include>
+						<include>TestSlidingPuzzle.java</include>
 					</includes>
 				</configuration>
 			</plugin>
@@ -33,6 +33,14 @@
 						<goals>
 							<goal>prepare-agent</goal>
 						</goals>
+						<configuration>
+							<excludes>
+								<exclude>PrincipalWindow.java</exclude>
+							</excludes>
+							<excludes>
+								<exclude>Main.java</exclude>
+							</excludes>
+						</configuration>
 					</execution>
 					<execution>
 						<id>report</id>

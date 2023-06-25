@@ -9,7 +9,7 @@ on:
 
 jobs:
   run:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -20,7 +20,7 @@ jobs:
         with:
           java-version: 17
       - name: Install dependencies
-        run: mvn install --batch-mode --no-transfer-progress -DskipTests -Dmaven.javadoc.skip=true
+        run: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
       - name: Cache Maven packages
         uses: actions/cache@v3
         with:
