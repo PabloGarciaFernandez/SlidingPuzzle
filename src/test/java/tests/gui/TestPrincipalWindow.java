@@ -19,6 +19,8 @@ public class TestPrincipalWindow {
 
 	@Test
 	void testInitialization() {
+		// To avoid errors in GitHub Actions because it causes an error if not.
+		System.setProperty("java.awt.headless", "true");
 		PrincipalWindow frame = new PrincipalWindow(puzzle);
 		// If an Exception arrises test will fail
 		assertTrue(true);
