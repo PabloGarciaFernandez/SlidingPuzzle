@@ -19,11 +19,8 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 17
-      - name: Set Maven opts
-        run: |
-          set MAVEN_OPTS=-DskipTests=true -Dmaven.javadoc.skip=true
       - name: Install dependencies
-      	run: mvn install -B -V
+        run: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
       - name: Cache Maven packages
         uses: actions/cache@v3
         with:
