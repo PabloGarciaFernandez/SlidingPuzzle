@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import logic.util.Logger;
+
 /**
  * This class represents a sliding puzzle game.
  *
@@ -38,6 +40,8 @@ public class SlidingPuzzle {
 	 * Constructs a new sliding puzzle game with the default initial state.
 	 */
 	public SlidingPuzzle() {
+		Logger.getInstance().log(Logger.INFO,
+				"Creation of instance of SlidingPuzzle.java");
 		createBoard();
 	}
 
@@ -45,6 +49,8 @@ public class SlidingPuzzle {
 	 * Shuffles the tiles on the game board.
 	 */
 	public void shuffle() {
+		Logger.getInstance().log(Logger.RUNNING,
+				"Class: SlidingPuzzle.java , method: shuffle()");
 		int n = 1000;
 		SecureRandom random = new SecureRandom();
 		int randomNumber = random.nextInt(15);
@@ -63,6 +69,8 @@ public class SlidingPuzzle {
 	 * Saves the initial state of the board.
 	 */
 	private void saveInitialBoard() {
+		Logger.getInstance().log(Logger.RUNNING,
+				"Class: SlidingPuzzle.java , method: saveInitialBoard()");
 		initialBoard = new int[4][4];
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board.length; j++) {
@@ -78,6 +86,8 @@ public class SlidingPuzzle {
 	 * @return the row position of the number
 	 */
 	public int rowPosition(int n) {
+		Logger.getInstance().log(Logger.RUNNING,
+				"Class: SlidingPuzzle.java , method: rowPosition()");
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board.length; j++) {
 				if (board[i][j] == n) {
@@ -95,6 +105,8 @@ public class SlidingPuzzle {
 	 * @return the column position of the number
 	 */
 	public int columnPosition(int n) {
+		Logger.getInstance().log(Logger.RUNNING,
+				"Class: SlidingPuzzle.java , method: columnPosition()");
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board.length; j++) {
 				if (board[i][j] == n) {
@@ -112,7 +124,8 @@ public class SlidingPuzzle {
 	 * @return true if the move was successful, false otherwise
 	 */
 	public boolean move(int n) {
-
+		Logger.getInstance().log(Logger.RUNNING,
+				"Class: SlidingPuzzle.java , method: move()");
 		// Get the positions(row and column) of the tiles
 		int blankTileRow = rowPosition(0);
 		int blankTileColumn = columnPosition(0);
@@ -146,6 +159,8 @@ public class SlidingPuzzle {
 	 */
 	private boolean canMove(int blankTileRow, int blankTileColumn,
 			int targetTileRow, int targetTileColumn) {
+		Logger.getInstance().log(Logger.RUNNING,
+				"Class: SlidingPuzzle.java , method: canMove()");
 
 		if (board[targetTileRow][targetTileColumn] == 0) {
 			return false;
@@ -166,6 +181,8 @@ public class SlidingPuzzle {
 	 * @return {@code true} if the player has won, {@code false} otherwise.
 	 */
 	public boolean win() {
+		Logger.getInstance().log(Logger.RUNNING,
+				"Class: SlidingPuzzle.java , method: win()");
 		return (board[0][0] == 1 && board[0][1] == 2 && board[0][2] == 3
 				&& board[0][3] == 4 && board[1][0] == 5 && board[1][1] == 6
 				&& board[1][2] == 7 && board[1][3] == 8 && board[2][0] == 9
@@ -178,6 +195,8 @@ public class SlidingPuzzle {
 	 * Resets the game.
 	 */
 	public void reset() {
+		Logger.getInstance().log(Logger.RUNNING,
+				"Class: SlidingPuzzle.java , method: reset()");
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board.length; j++) {
 				board[i][j] = initialBoard[i][j];
@@ -191,6 +210,8 @@ public class SlidingPuzzle {
 	 * Solves the game.
 	 */
 	public void solve() {
+		Logger.getInstance().log(Logger.RUNNING,
+				"Class: SlidingPuzzle.java , method: solve()");
 		List<Integer> rev = new ArrayList<Integer>();
 		rev.addAll(movements);
 		Collections.reverse(rev);
@@ -204,6 +225,8 @@ public class SlidingPuzzle {
 	 * Creates the sorted board.
 	 */
 	private void createBoard() {
+		Logger.getInstance().log(Logger.RUNNING,
+				"Class: SlidingPuzzle.java , method: createBoard()");
 		int e = 1;
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board.length; j++) {
@@ -223,6 +246,8 @@ public class SlidingPuzzle {
 	 * @return The board of the puzzle.
 	 */
 	public int[][] getBoard() {
+		Logger.getInstance().log(Logger.RUNNING,
+				"Class: SlidingPuzzle.java , method: getBoard()");
 		return board;
 	}
 
@@ -232,6 +257,8 @@ public class SlidingPuzzle {
 	 * @return The initial state of the board.
 	 */
 	public int[][] getInitialBoard() {
+		Logger.getInstance().log(Logger.RUNNING,
+				"Class: SlidingPuzzle.java , method: getInitialBoard()");
 		return initialBoard;
 	}
 
