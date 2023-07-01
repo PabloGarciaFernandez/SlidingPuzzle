@@ -4,6 +4,7 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=PabloGarciaFernandez_SlidingPuzzle&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=PabloGarciaFernandez_SlidingPuzzle)
 [![codecov](https://codecov.io/gh/PabloGarciaFernandez/SlidingPuzzle/branch/main/graph/badge.svg?token=CTQG23T7OY)](https://codecov.io/gh/PabloGarciaFernandez/SlidingPuzzle)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FPabloGarciaFernandez%2FSlidingPuzzle.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FPabloGarciaFernandez%2FSlidingPuzzle?ref=badge_shield)
+![Static Badge](https://img.shields.io/badge/release-v1.0.0-blue)
 
 
 ## Description
@@ -25,6 +26,7 @@ Throughout the process, we will prioritize thorough testing and debugging to ens
 <a href="https://www.jacoco.org/" style="margin-right: 0.5em;"><img src="http://intellitech.pro/wp-content/uploads/2017/05/Jacoco-icon.png" height="50"></a>
 <a href="https://junit.org/junit5/" style="margin-right: 0.5em;"><img src="https://i0.wp.com/blog.knoldus.com/wp-content/uploads/2020/06/junit5-banner.png?w=982&ssl=1" height="50"></a>
 <a href="https://github.com/actions" style="margin-right: 0.5em;"><img src="https://avatars.githubusercontent.com/u/44036562?s=200&v=4" height="50"></a>
+<a href="https://site.mockito.org/" style="margin-right: 0.5em;"><img src="https://github.com/mockito/mockito" height="50"></a>
 </p>
 
 
