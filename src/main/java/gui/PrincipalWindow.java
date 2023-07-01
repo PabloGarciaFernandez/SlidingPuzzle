@@ -146,7 +146,7 @@ public class PrincipalWindow extends JFrame {
 		return pnButtons;
 	}
 
-	private JButton getBtReset() {
+	public JButton getBtReset() {
 		Logger.getInstance().log(Logger.RUNNING,
 				"Class: PrincipalWindow.java , method: getBtReset()");
 		if (btReset == null) {
@@ -164,7 +164,7 @@ public class PrincipalWindow extends JFrame {
 		return btReset;
 	}
 
-	private JButton getBtSolve() {
+	public JButton getBtSolve() {
 		Logger.getInstance().log(Logger.RUNNING,
 				"Class: PrincipalWindow.java , method: getBtSolve()");
 		if (btSolve == null) {
@@ -180,6 +180,12 @@ public class PrincipalWindow extends JFrame {
 			btSolve.setBackground(new Color(255, 128, 64));
 		}
 		return btSolve;
+	}
+
+	public JPanel getPnBoard() {
+		Logger.getInstance().log(Logger.RUNNING,
+				"Class: PrincipalWindow.java , method: getPnBoard()");
+		return pnBoard;
 	}
 
 	private JPanel getPnWin() {

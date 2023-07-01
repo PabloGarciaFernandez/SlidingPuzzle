@@ -1,6 +1,10 @@
 package tests.gui;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import javax.swing.AbstractButton;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,19 +14,38 @@ import logic.SlidingPuzzle;
 
 public class TestPrincipalWindow {
 
+	private PrincipalWindow window;
 	private SlidingPuzzle puzzle;
 
 	@BeforeEach
-	void init() {
+	void setUp() {
 		puzzle = new SlidingPuzzle();
+		window = new PrincipalWindow(puzzle);
 	}
 
 	@Test
-	void testInitialization() {
-		// To avoid errors in GitHub Actions because it causes an error if not.
-//		System.setProperty("java.awt.headless", "true");
-		PrincipalWindow frame = new PrincipalWindow(puzzle);
-		// If an Exception arrises test will fail
-		assertTrue(true);
+	void testWindowCreation() {
+		assertNotNull(window);
+	}
+
+	@Test
+	void testResetButton() {
+		window.getBtReset().doClick();
+		// Verify that the puzzle is reset
+		assertFalse(puzzle.win());
+	}
+
+	@Test
+	void testSolveButton() {
+		window.getBtSolve().doClick();
+		// Verify that the puzzle is solved
+		assertTrue(puzzle.win());
+	}
+
+	@Test
+	void testTileClick() {
+		// Simulate a tile click
+		((AbstractButton) window.getPnBoard().getComponent(0)).doClick();
+		assertFalse(puzzle.win());
 	}
 }
