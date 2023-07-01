@@ -20,7 +20,8 @@ jobs:
         with:
           java-version: 17
       - name: Set Maven opts
-        run: set MAVEN_OPTS=-DskipTests=true -Dmaven.javadoc.skip=true
+        run: |
+          set MAVEN_OPTS=-DskipTests=true -Dmaven.javadoc.skip=true
       - name: Install dependencies
 		run: mvn install -B -V
       - name: Cache Maven packages
