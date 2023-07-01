@@ -18,6 +18,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import logic.SlidingPuzzle;
+import logic.util.Logger;
 
 public class PrincipalWindow extends JFrame {
 
@@ -37,6 +38,8 @@ public class PrincipalWindow extends JFrame {
 	 * Create the frame.
 	 */
 	public PrincipalWindow(SlidingPuzzle puzzle) {
+		Logger.getInstance().log(Logger.INFO,
+				"Creation of instance of PrincipalWindow.java");
 		this.puzzle = puzzle;
 		setBackground(new Color(0, 0, 0));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -52,6 +55,8 @@ public class PrincipalWindow extends JFrame {
 	}
 
 	private void addTiles() {
+		Logger.getInstance().log(Logger.RUNNING,
+				"Class: PrincipalWindow.java , method: addTiles()");
 		int n = 0;
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 4; j++) {
@@ -85,6 +90,8 @@ public class PrincipalWindow extends JFrame {
 	}
 
 	private void createTiles() {
+		Logger.getInstance().log(Logger.RUNNING,
+				"Class: PrincipalWindow.java , method: createTiles()");
 		puzzle.shuffle();
 		// Create an array of buttons.
 		buttons = new JButton[16];
@@ -98,6 +105,8 @@ public class PrincipalWindow extends JFrame {
 	}
 
 	private void updatePanel() {
+		Logger.getInstance().log(Logger.RUNNING,
+				"Class: PrincipalWindow.java , method: updatePanel()");
 		for (Component component : pnBoard.getComponents()) {
 			pnBoard.remove(component);
 		}
@@ -115,6 +124,8 @@ public class PrincipalWindow extends JFrame {
 	}
 
 	private JPanel getPnGame() {
+		Logger.getInstance().log(Logger.RUNNING,
+				"Class: PrincipalWindow.java , method: getPnGame()");
 		if (pnGame == null) {
 			pnGame = new JPanel();
 			pnGame.setLayout(new BorderLayout(0, 0));
@@ -124,6 +135,8 @@ public class PrincipalWindow extends JFrame {
 	}
 
 	private JPanel getPnButtons() {
+		Logger.getInstance().log(Logger.RUNNING,
+				"Class: PrincipalWindow.java , method: getPnButtons()");
 		if (pnButtons == null) {
 			pnButtons = new JPanel();
 			pnButtons.setBackground(Color.BLACK);
@@ -133,7 +146,9 @@ public class PrincipalWindow extends JFrame {
 		return pnButtons;
 	}
 
-	private JButton getBtReset() {
+	public JButton getBtReset() {
+		Logger.getInstance().log(Logger.RUNNING,
+				"Class: PrincipalWindow.java , method: getBtReset()");
 		if (btReset == null) {
 			btReset = new JButton("Reset");
 			btReset.addActionListener(new ActionListener() {
@@ -149,7 +164,9 @@ public class PrincipalWindow extends JFrame {
 		return btReset;
 	}
 
-	private JButton getBtSolve() {
+	public JButton getBtSolve() {
+		Logger.getInstance().log(Logger.RUNNING,
+				"Class: PrincipalWindow.java , method: getBtSolve()");
 		if (btSolve == null) {
 			btSolve = new JButton("Solve");
 			btSolve.addActionListener(new ActionListener() {
@@ -165,7 +182,15 @@ public class PrincipalWindow extends JFrame {
 		return btSolve;
 	}
 
+	public JPanel getPnBoard() {
+		Logger.getInstance().log(Logger.RUNNING,
+				"Class: PrincipalWindow.java , method: getPnBoard()");
+		return pnBoard;
+	}
+
 	private JPanel getPnWin() {
+		Logger.getInstance().log(Logger.RUNNING,
+				"Class: PrincipalWindow.java , method: getPnWin()");
 		if (pnWin == null) {
 			pnWin = new JPanel();
 			pnWin.setBackground(new Color(0, 0, 0));
@@ -177,6 +202,8 @@ public class PrincipalWindow extends JFrame {
 	}
 
 	private JLabel getLbCongratulations() {
+		Logger.getInstance().log(Logger.RUNNING,
+				"Class: PrincipalWindow.java , method: getLbCongratulations()");
 		if (lbCongratulations == null) {
 			lbCongratulations = new JLabel("Congratulations!");
 			lbCongratulations.setVerticalAlignment(SwingConstants.BOTTOM);
@@ -190,6 +217,8 @@ public class PrincipalWindow extends JFrame {
 	}
 
 	private JLabel getLbText() {
+		Logger.getInstance().log(Logger.RUNNING,
+				"Class: PrincipalWindow.java , method: getLbText()");
 		if (lbText == null) {
 			lbText = new JLabel("You have won the SlidingPuzzle");
 			lbText.setVerticalAlignment(SwingConstants.TOP);

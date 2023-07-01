@@ -9,7 +9,7 @@ on:
 
 jobs:
   run:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -20,7 +20,7 @@ jobs:
         with:
           java-version: 17
       - name: Install dependencies
-        run: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+        run: mvn install -DskipTests=true -B -V
       - name: Cache Maven packages
         uses: actions/cache@v3
         with:
@@ -31,7 +31,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=PabloGarciaFernandez_SlidingPuzzle
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
         with:
