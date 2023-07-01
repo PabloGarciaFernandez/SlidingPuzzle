@@ -8,17 +8,20 @@ import javax.swing.AbstractButton;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import gui.PrincipalWindow;
 import logic.SlidingPuzzle;
 
 public class TestPrincipalWindow {
-
+	@Mock
 	private PrincipalWindow window;
 	private SlidingPuzzle puzzle;
 
 	@BeforeEach
 	void setUp() {
+		MockitoAnnotations.openMocks(this);
 		puzzle = new SlidingPuzzle();
 		window = new PrincipalWindow(puzzle);
 	}
