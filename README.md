@@ -26,7 +26,7 @@ Throughout the process, we will prioritize thorough testing and debugging to ens
 <a href="https://www.jacoco.org/" style="margin-right: 0.5em;"><img src="http://intellitech.pro/wp-content/uploads/2017/05/Jacoco-icon.png" height="50"></a>
 <a href="https://junit.org/junit5/" style="margin-right: 0.5em;"><img src="https://i0.wp.com/blog.knoldus.com/wp-content/uploads/2020/06/junit5-banner.png?w=982&ssl=1" height="50"></a>
 <a href="https://github.com/actions" style="margin-right: 0.5em;"><img src="https://avatars.githubusercontent.com/u/44036562?s=200&v=4" height="50"></a>
-<a href="https://site.mockito.org/" style="margin-right: 0.5em;"><img src="https://github.com/mockito/mockito" height="50"></a>
+<a href="https://site.mockito.org/" style="margin-right: 0.5em;"><img src="https://raw.githubusercontent.com/mockito/mockito/main/src/javadoc/org/mockito/logo.png" height="50"></a>
 </p>
 
 
