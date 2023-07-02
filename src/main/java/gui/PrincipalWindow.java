@@ -22,6 +22,10 @@ import logic.util.Logger;
 
 public class PrincipalWindow extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private SlidingPuzzle puzzle;
 	private JButton[] buttons;
