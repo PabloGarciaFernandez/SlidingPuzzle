@@ -20,6 +20,14 @@ import javax.swing.border.LineBorder;
 import logic.SlidingPuzzle;
 import logic.util.Logger;
 
+/**
+ * This class represents a sliding puzzle game GUI.
+ *
+ * @author Pedro Zahonero Mangas
+ * @author Pablo Garcia Fernandez
+ * @version 1.0
+ * @since 2023-05-15
+ */
 public class PrincipalWindow extends JFrame {
 
 	/**
@@ -52,12 +60,15 @@ public class PrincipalWindow extends JFrame {
 		contentPane.setBackground(new Color(0, 0, 0));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		createTiles();
+		createBoard();
 		contentPane.setLayout(new CardLayout(0, 0));
 		contentPane.add(getPnGame(), "pnGame");
 		contentPane.add(getPnWin(), "pnWin");
 	}
 
+	/**
+	 * Creates all the tiles of the board
+	 */
 	private void addTiles() {
 		Logger.getInstance().log(Logger.RUNNING,
 				"Class: PrincipalWindow.java , method: addTiles()");
@@ -93,40 +104,44 @@ public class PrincipalWindow extends JFrame {
 		}
 	}
 
-	private void createTiles() {
+	/**
+	 * Create the board with the tiles
+	 */
+	private void createBoard() {
 		Logger.getInstance().log(Logger.RUNNING,
 				"Class: PrincipalWindow.java , method: createTiles()");
 		puzzle.shuffle();
-		// Create an array of buttons.
 		buttons = new JButton[16];
-		// Add the buttons to a panel.
 		pnBoard = new JPanel();
 		pnBoard.setBackground(new Color(0, 0, 0));
 		pnBoard.setLayout(new GridLayout(4, 4, 0, 0));
 		addTiles();
-		// Add the panel to the content pane.
 		getPnGame().add(pnBoard, BorderLayout.CENTER);
 	}
 
+	/**
+	 * Updates the board
+	 */
 	private void updatePanel() {
 		Logger.getInstance().log(Logger.RUNNING,
 				"Class: PrincipalWindow.java , method: updatePanel()");
 		for (Component component : pnBoard.getComponents()) {
 			pnBoard.remove(component);
 		}
-		// Revalidate and repaint the panel.
 		pnBoard.revalidate();
 		pnBoard.repaint();
 		addTiles();
 		if (puzzle.win()) {
 			CardLayout layout = (CardLayout) getContentPane().getLayout();
 			layout.show(getContentPane(), "pnWin");
-
 		}
-
-		// createTiles();
 	}
 
+	/**
+	 * The panel where is the game
+	 * 
+	 * @return The panel
+	 */
 	private JPanel getPnGame() {
 		Logger.getInstance().log(Logger.RUNNING,
 				"Class: PrincipalWindow.java , method: getPnGame()");
@@ -138,6 +153,11 @@ public class PrincipalWindow extends JFrame {
 		return pnGame;
 	}
 
+	/**
+	 * The panel where are the buttons of solve or reset
+	 * 
+	 * @return The Panel
+	 */
 	private JPanel getPnButtons() {
 		Logger.getInstance().log(Logger.RUNNING,
 				"Class: PrincipalWindow.java , method: getPnButtons()");
@@ -150,6 +170,11 @@ public class PrincipalWindow extends JFrame {
 		return pnButtons;
 	}
 
+	/**
+	 * The button that reset the game
+	 * 
+	 * @return The button
+	 */
 	public JButton getBtReset() {
 		Logger.getInstance().log(Logger.RUNNING,
 				"Class: PrincipalWindow.java , method: getBtReset()");
@@ -168,6 +193,11 @@ public class PrincipalWindow extends JFrame {
 		return btReset;
 	}
 
+	/**
+	 * The button that solve the game
+	 * 
+	 * @return The button
+	 */
 	public JButton getBtSolve() {
 		Logger.getInstance().log(Logger.RUNNING,
 				"Class: PrincipalWindow.java , method: getBtSolve()");
@@ -186,12 +216,22 @@ public class PrincipalWindow extends JFrame {
 		return btSolve;
 	}
 
+	/**
+	 * The panel of the board where are the tiles
+	 * 
+	 * @return The panel
+	 */
 	public JPanel getPnBoard() {
 		Logger.getInstance().log(Logger.RUNNING,
 				"Class: PrincipalWindow.java , method: getPnBoard()");
 		return pnBoard;
 	}
 
+	/**
+	 * The panel where congratulates you when you win the game
+	 * 
+	 * @return The panel
+	 */
 	private JPanel getPnWin() {
 		Logger.getInstance().log(Logger.RUNNING,
 				"Class: PrincipalWindow.java , method: getPnWin()");
@@ -205,6 +245,11 @@ public class PrincipalWindow extends JFrame {
 		return pnWin;
 	}
 
+	/**
+	 * The label of congratulations, it is shown when the the player wins
+	 * 
+	 * @return The label
+	 */
 	private JLabel getLbCongratulations() {
 		Logger.getInstance().log(Logger.RUNNING,
 				"Class: PrincipalWindow.java , method: getLbCongratulations()");
@@ -220,6 +265,11 @@ public class PrincipalWindow extends JFrame {
 		return lbCongratulations;
 	}
 
+	/**
+	 * Label with a little text, it is shown when the the player wins
+	 * 
+	 * @return The label
+	 */
 	private JLabel getLbText() {
 		Logger.getInstance().log(Logger.RUNNING,
 				"Class: PrincipalWindow.java , method: getLbText()");

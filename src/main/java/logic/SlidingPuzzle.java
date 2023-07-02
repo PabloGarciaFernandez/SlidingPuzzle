@@ -8,7 +8,7 @@ import java.util.List;
 import logic.util.Logger;
 
 /**
- * This class represents a sliding puzzle game.
+ * This class represents a sliding puzzle game logic.
  *
  * @author Pedro Zahonero Mangas
  * @author Pablo Garcia Fernandez

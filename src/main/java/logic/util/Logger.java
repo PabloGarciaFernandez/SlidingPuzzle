@@ -7,6 +7,14 @@ import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * This class represents the logger of the app.
+ *
+ * @author Pedro Zahonero Mangas
+ * @author Pablo Garcia Fernandez
+ * @version 1.0
+ * @since 2023-05-15
+ */
 public final class Logger {
 	public static final String ERROR = " [ERROR] -> ";
 	public static final String RUNNING = " [RUNNING] -> ";
@@ -14,6 +22,9 @@ public final class Logger {
 	private static Logger instance;
 	private String path;
 
+	/**
+	 * The constructor of class
+	 */
 	private Logger() {
 		String folderPath = "logs/";
 		String fileName = "LOG-T7-G26-" + getFormattedDateTime("file") + ".txt";
@@ -21,6 +32,11 @@ public final class Logger {
 		createLog(this.path);
 	}
 
+	/**
+	 * The instance of the class
+	 * 
+	 * @return instance
+	 */
 	public static Logger getInstance() {
 		if (instance == null) {
 			instance = new Logger();
@@ -28,6 +44,11 @@ public final class Logger {
 		return instance;
 	}
 
+	/**
+	 * Creates the log file
+	 * 
+	 * @param filePath The path of the file to create
+	 */
 	private void createLog(String filePath) {
 		try {
 			Files.createDirectories(Paths.get("logs"));
@@ -39,6 +60,12 @@ public final class Logger {
 		}
 	}
 
+	/**
+	 * Method that returns a datetime depending on the type
+	 * 
+	 * @param type type of the file
+	 * @return the date
+	 */
 	private String getFormattedDateTime(String type) {
 		SimpleDateFormat dateFormat = null;
 		if (type.equals("file")) {
@@ -53,6 +80,12 @@ public final class Logger {
 		return null;
 	}
 
+	/**
+	 * Logs the process
+	 * 
+	 * @param type    The type of the messages (Error, Info or Running)
+	 * @param message The message to log
+	 */
 	public void log(String type, String message) {
 		FileWriter fileWriter = null;
 		try {
@@ -71,6 +104,13 @@ public final class Logger {
 		}
 	}
 
+	/**
+	 * Gets the message formatted to write in the log
+	 * 
+	 * @param type    The type of the messages (Error, Info or Running)
+	 * @param message The message to log
+	 * @return message formatted
+	 */
 	private String getFormattedMessage(String type, String message) {
 		return getFormattedDateTime("log") + type + message;
 	}
