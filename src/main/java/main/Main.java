@@ -9,7 +9,12 @@ import logic.util.Logger;
 public class Main {
 
 	/**
-	 * Launch the application.
+	 * Launch the application
+	 *
+	 * @author Pedro Zahonero Mangas
+	 * @author Pablo Garcia Fernandez
+	 * @version 1.0
+	 * @since 2023-05-15
 	 */
 	public static void main(String[] args) {
 		Logger.getInstance().log(Logger.INFO,
